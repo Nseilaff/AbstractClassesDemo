@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace ConsoleUI
 {
     class Program
@@ -32,20 +33,55 @@ namespace ConsoleUI
             */
 
             // Create a list of Vehicle called vehicles
+            var vehicles = new List<Vehicle>();
 
             /*
-             * Create 4 instances: 1 Car, 1 Motorcycle, and then 2 instances of type Vehicle (use explicit typing) but use constuctors from derived classes
+             * Create 4 instances: 1 Car, 1 Motorcycle, and then 2 instances of type  + 
+             * Vehicle (use explicit typing) but use constuctors from derived classes
              * - new it up as one of each derived class
              * Set the properties with object initializer syntax
              */
-
+            var newCar = new Car()
+            {
+                Year = "1997",
+                Make = "Ford",
+                Model = "Taurus"
+            };
+            vehicles.Add(newCar);
+            var newBike = new Motorcycle()
+            {
+                Year = "2007",
+                Make = "Suzuki",
+                Model = "SV650"
+            };
+            vehicles.Add(newBike);
+            Vehicle vehicle1 = new Motorcycle()
+            {
+                Year = "2015",
+                Make = "Yamaha",
+                Model = "R1"
+            };
+            vehicles.Add(vehicle1);
+            Vehicle vehicle2 = new Car() 
+            { 
+                Year= "2010",
+                Make = "Audi",
+                Model = "R8"
+            };
+            vehicles.Add(vehicle2);
             /*
              * Add the 4 vehicles to the list
              * Using a foreach loop iterate over each of the properties
              */
+            foreach (var item in vehicles)
+            {
+                Console.WriteLine();
+                Console.WriteLine($"{item.Year},\n{item.Make}, \n{item.Model}");
+            }
 
             // Call each of the drive methods for one car and one motorcycle
-
+            newCar.DriveAbstract();
+            newBike.DriveVirtual();
             #endregion            
             Console.ReadLine();
         }
